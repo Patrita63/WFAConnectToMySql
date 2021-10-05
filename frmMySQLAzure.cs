@@ -87,10 +87,10 @@ namespace WFAConnectToMySql
             }
         }
 
-        private async void btnReadGuest_Click(object sender, EventArgs e)
+        private async void btnReadFromSchema_Click(object sender, EventArgs e)
         {
             string query = string.Empty;
-            List<Inventory> listInventory = null;
+            List<string> listTables = null;
             try
             {
                 builder = new MySqlConnectionStringBuilder
@@ -109,10 +109,20 @@ namespace WFAConnectToMySql
 
                 labelDGVResult.Text = string.Empty;
                 textBoxResult.Text = string.Empty;
-                query = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'hotel-coupon';";     // LASCIARE il ; ALLA FINE DELLO STATEMENT
-                listInventory = await oMySQL.getFromGuest(builder.ConnectionString, query);
-                dataGridViewResult.DataSource = listInventory;
-                labelDGVResult.Text = string.Format("Num. record(s): {0}", listInventory.Count);
+                query = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'testdb';";     // LASCIARE il ; ALLA FINE DELLO STATEMENT
+                listTables = await oMySQL.getFromSchema(builder.ConnectionString, query);
+
+                textBoxResult.Text = string.Format("ConnectionString: {0}{2}query: {1}", builder.ConnectionString, query, Environment.NewLine);
+
+                // How to bind a List<string> to a DataGridView control?
+                // https://stackoverflow.com/questions/479329/how-to-bind-a-liststring-to-a-datagridview-control
+                // dataGridViewResult.DataSource = listTables;
+
+                // IList<String> list_string = new List<String>();
+
+                // dataGridViewResult.DataSource = listTables.Select(x => new { Value = x }).ToList();
+                dataGridViewResult.DataSource = listTables.Select(x => new { TableName = x }).ToList();
+                labelDGVResult.Text = string.Format("Num. record(s): {0}", listTables.Count);
             }
             catch (Exception ex)
             {

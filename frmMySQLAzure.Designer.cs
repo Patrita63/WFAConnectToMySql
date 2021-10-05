@@ -34,7 +34,7 @@ namespace WFAConnectToMySql
             this.btnReadData = new System.Windows.Forms.Button();
             this.labelDGVResult = new System.Windows.Forms.Label();
             this.textBoxResult = new System.Windows.Forms.TextBox();
-            this.btnReadGuest = new System.Windows.Forms.Button();
+            this.btnReadFromSchema = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,22 +84,22 @@ namespace WFAConnectToMySql
             this.textBoxResult.Size = new System.Drawing.Size(772, 108);
             this.textBoxResult.TabIndex = 4;
             // 
-            // btnReadGuest
+            // btnReadFromSchema
             // 
-            this.btnReadGuest.Location = new System.Drawing.Point(284, 38);
-            this.btnReadGuest.Name = "btnReadGuest";
-            this.btnReadGuest.Size = new System.Drawing.Size(118, 23);
-            this.btnReadGuest.TabIndex = 5;
-            this.btnReadGuest.Text = "Read From Guest";
-            this.btnReadGuest.UseVisualStyleBackColor = true;
-            this.btnReadGuest.Click += new System.EventHandler(this.btnReadGuest_Click);
+            this.btnReadFromSchema.Location = new System.Drawing.Point(284, 38);
+            this.btnReadFromSchema.Name = "btnReadFromSchema";
+            this.btnReadFromSchema.Size = new System.Drawing.Size(118, 23);
+            this.btnReadFromSchema.TabIndex = 5;
+            this.btnReadFromSchema.Text = "Read From Schema";
+            this.btnReadFromSchema.UseVisualStyleBackColor = true;
+            this.btnReadFromSchema.Click += new System.EventHandler(this.btnReadFromSchema_Click);
             // 
             // frmMySQLAzure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 496);
-            this.Controls.Add(this.btnReadGuest);
+            this.Controls.Add(this.btnReadFromSchema);
             this.Controls.Add(this.textBoxResult);
             this.Controls.Add(this.labelDGVResult);
             this.Controls.Add(this.btnReadData);
@@ -121,7 +121,7 @@ namespace WFAConnectToMySql
         private System.Windows.Forms.Button btnReadData;
         private System.Windows.Forms.Label labelDGVResult;
         private System.Windows.Forms.TextBox textBoxResult;
-        private System.Windows.Forms.Button btnReadGuest;
+        private System.Windows.Forms.Button btnReadFromSchema;
     }
 }
 

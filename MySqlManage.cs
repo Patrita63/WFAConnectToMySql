@@ -90,45 +90,46 @@ namespace WFAConnectToMySql
         }
 
 
-        public async Task<List<Inventory>> getFromGuest(string ConnectionString, string query)
+        public async Task<List<string>> getFromSchema(string ConnectionString, string query)
         {
-            List<Inventory> listInventory = null;
-            using (var conn = new MySqlConnection(ConnectionString))
+            List<string> listTables = null;
+            try
             {
-                Console.WriteLine("Opening connection");
-                await conn.OpenAsync();
-
-                using (var command = conn.CreateCommand())
+                using (var conn = new MySqlConnection(ConnectionString))
                 {
-                    command.CommandText = query; // "SELECT * FROM inventory;";
+                    Console.WriteLine("Opening connection");
+                    await conn.OpenAsync();
 
-                    using (var reader = await command.ExecuteReaderAsync())
+                    using (var command = conn.CreateCommand())
                     {
-                        listInventory = new List<Inventory>();
-                        Inventory item = null;
-                        while (await reader.ReadAsync())
-                        {
-                            item = new Inventory();
-                            item.id = reader.GetInt32(0);
-                            item.name = reader.GetString(1);
-                            item.quantity = reader.GetInt32(2);
+                        command.CommandText = query;
 
-                            listInventory.Add(item);
-                            //Console.WriteLine(string.Format(
-                            //    "Reading from table=({0}, {1}, {2})",
-                            //    reader.GetInt32(0),
-                            //    reader.GetString(1),
-                            //    reader.GetInt32(2)));
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            listTables = new List<string>();
+                            while (await reader.ReadAsync())
+                            {
+                                var row = reader.GetValue(0);
+                                var tableName = reader.GetString(0);
+
+                                listTables.Add(tableName);
+                            }
                         }
                     }
+
                 }
 
-                Console.WriteLine("Closing connection");
             }
-
-            Console.WriteLine("Press RETURN to exit");
-            Console.ReadLine();
-            return listInventory;
+            catch(Exception ex)
+            {
+                string sErr = string.Empty;
+                if (ex.InnerException != null)
+                    sErr = string.Format("Source: {0}{4} - Message: {1}{4} - InnerException:{2}{4} - StackTrace: {3}{4}", ex.Source, ex.Message, ex.StackTrace, ex.InnerException, Environment.NewLine);
+                else
+                    sErr = string.Format("Source: {0} - Message: {1} - StackTrace: {2}", ex.Source, ex.Message, ex.StackTrace);
+            }
+            
+            return listTables;
         }
 
     }
