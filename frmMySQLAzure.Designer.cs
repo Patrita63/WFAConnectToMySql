@@ -35,6 +35,11 @@ namespace WFAConnectToMySql
             this.labelDGVResult = new System.Windows.Forms.Label();
             this.textBoxResult = new System.Windows.Forms.TextBox();
             this.btnReadFromSchema = new System.Windows.Forms.Button();
+            this.btnReadKeyVault = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxKeyVaultName = new System.Windows.Forms.TextBox();
+            this.textBoxSecretName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +48,7 @@ namespace WFAConnectToMySql
             this.dataGridViewResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResult.Location = new System.Drawing.Point(12, 114);
             this.dataGridViewResult.Name = "dataGridViewResult";
-            this.dataGridViewResult.Size = new System.Drawing.Size(776, 246);
+            this.dataGridViewResult.Size = new System.Drawing.Size(813, 290);
             this.dataGridViewResult.TabIndex = 0;
             // 
             // btnCreateTable
@@ -77,11 +82,11 @@ namespace WFAConnectToMySql
             // 
             // textBoxResult
             // 
-            this.textBoxResult.Location = new System.Drawing.Point(16, 376);
+            this.textBoxResult.Location = new System.Drawing.Point(12, 423);
             this.textBoxResult.Multiline = true;
             this.textBoxResult.Name = "textBoxResult";
             this.textBoxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxResult.Size = new System.Drawing.Size(772, 108);
+            this.textBoxResult.Size = new System.Drawing.Size(813, 108);
             this.textBoxResult.TabIndex = 4;
             // 
             // btnReadFromSchema
@@ -94,11 +99,58 @@ namespace WFAConnectToMySql
             this.btnReadFromSchema.UseVisualStyleBackColor = true;
             this.btnReadFromSchema.Click += new System.EventHandler(this.btnReadFromSchema_Click);
             // 
+            // btnReadKeyVault
+            // 
+            this.btnReadKeyVault.Location = new System.Drawing.Point(726, 64);
+            this.btnReadKeyVault.Name = "btnReadKeyVault";
+            this.btnReadKeyVault.Size = new System.Drawing.Size(99, 23);
+            this.btnReadKeyVault.TabIndex = 6;
+            this.btnReadKeyVault.Text = "Read Key Vault";
+            this.btnReadKeyVault.UseVisualStyleBackColor = true;
+            this.btnReadKeyVault.Click += new System.EventHandler(this.btnReadKeyVault_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(484, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Key Vault Name:";
+            // 
+            // textBoxKeyVaultName
+            // 
+            this.textBoxKeyVaultName.Location = new System.Drawing.Point(576, 39);
+            this.textBoxKeyVaultName.Name = "textBoxKeyVaultName";
+            this.textBoxKeyVaultName.Size = new System.Drawing.Size(144, 20);
+            this.textBoxKeyVaultName.TabIndex = 8;
+            // 
+            // textBoxSecretName
+            // 
+            this.textBoxSecretName.Location = new System.Drawing.Point(576, 67);
+            this.textBoxSecretName.Name = "textBoxSecretName";
+            this.textBoxSecretName.Size = new System.Drawing.Size(144, 20);
+            this.textBoxSecretName.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(484, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Secret Name:";
+            // 
             // frmMySQLAzure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 496);
+            this.ClientSize = new System.Drawing.Size(837, 543);
+            this.Controls.Add(this.textBoxSecretName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxKeyVaultName);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnReadKeyVault);
             this.Controls.Add(this.btnReadFromSchema);
             this.Controls.Add(this.textBoxResult);
             this.Controls.Add(this.labelDGVResult);
@@ -122,6 +174,11 @@ namespace WFAConnectToMySql
         private System.Windows.Forms.Label labelDGVResult;
         private System.Windows.Forms.TextBox textBoxResult;
         private System.Windows.Forms.Button btnReadFromSchema;
+        private System.Windows.Forms.Button btnReadKeyVault;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxKeyVaultName;
+        private System.Windows.Forms.TextBox textBoxSecretName;
+        private System.Windows.Forms.Label label2;
     }
 }
 
